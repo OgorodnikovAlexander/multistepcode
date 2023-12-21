@@ -408,10 +408,7 @@ var we_tabs_next_button = '#next';
 
 
     }if($('.w--tab-active').attr('data-w-tab')=='Additional') {
-        $('#Departments-amount').hide();
-  $('#IVR-amount').hide();
-  $('#GPU-amount').hide();
-  $('#next').addClass('active');
+        $('#next').addClass('active');
 
       nextTab = 'Details';
       we_activeTab = $(".w--tab-active").attr("data-w-tab");
