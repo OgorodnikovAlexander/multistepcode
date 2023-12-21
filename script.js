@@ -471,11 +471,13 @@ var we_tabs_next_button = '#next';
     }
 $("[data-name='Plan']").on("input", function () {
       Plan = Get__Plan_Prise(getValueFromInputData('Plan'));
+  GPU2 = Get_GPU_Price();
   Update_total();
 });
     
     $("[data-name='Plan']").parent("label.w-radio").on("click", function () {
         Plan = Get__Plan_Prise(getValueFromInputData('Plan'));
+  GPU2 = Get_GPU_Price();
   Update_total();
 });
 
