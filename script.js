@@ -11,7 +11,7 @@ function Update_total() {
   Total = (Math.ceil(Total*1))/1;
   $('[bloc=Total]').text(Total);
   $('[bloc=Subscribtion]').text((Math.round((Quantity * Plan * months * Discount)*10))/10);
-  $('[bloc=GPU]').text((Math.round((GPU2 * months * Discount)*10))/10);
+  $('[bloc=GPU]').text((Math.round((Get_GPU_Price() * months * Discount)*10))/10);
   $('[bloc=Departments]').text((Math.round((Departments * months * Discount)*10))/10);
   $('[bloc=IVR]').text((Math.round((IVR * months * Discount)*1))/1);
   Update_discount_representation();
@@ -503,14 +503,7 @@ $("[data-name='IVR-amount']").on("input", function () {
 });
 
 $('#GPUcheckbox').on('click',function() {
-  console.log('hui');
-  if ($('#GPUcheckbox:checked').length != 0) {
-    GPU2 = Get_GPU_Price();
-    Update_total();
-  } else {
-    GPU2 = Get_GPU_Price();
-    Update_total();
-  }
+  Update_total();
 });
 
 $("[data-name='Do not know']").on("input", function () {
