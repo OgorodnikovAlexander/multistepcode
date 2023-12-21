@@ -575,7 +575,7 @@ $('#GPUcheckbox').on('click',function() {
       });
 
 $('#Do-not-know').on('click',function() {
-  if ($('#dontknow:checked').length != 0) {
+  if ($('#dontknow:checked').length == 0) {
     $('#Departments-amount').hide();
     $('.departments').hide();
     Departments = 0;
