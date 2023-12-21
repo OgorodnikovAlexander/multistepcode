@@ -216,18 +216,6 @@ $("[data-name='Email']").on("input", function () {
         Check_Email();
 });
 
-$("[data-name='Departments-amount']").on("input", function () {
-      $('#Departments-amount').show();
-  Departments = getValueFromInputData('Departments-amount');
-  Update_total();
-});
-    
-    $("[data-name='Departments-amount']").parent("label.w-radio").on("click", function () {
-        $('#Departments-amount').show();
-  Departments = getValueFromInputData('Departments-amount');
-  Update_total();
-});
-
 $("[data-name='Company']").on("input", function () {
       Check_Company();
 });
@@ -503,7 +491,6 @@ $("[data-name='IVR-amount']").on("input", function () {
 });
 
 $('#GPUcheckbox').on('click',function() {
-  console.log(('#GPUcheckbox:checked').length);
   if ($('#GPUcheckbox:checked').length != 0) {
     GPU2 = Get_GPU_Price();
     Update_total();
@@ -511,6 +498,30 @@ $('#GPUcheckbox').on('click',function() {
     GPU2 = 0;
     Update_total();
   }
+});
+
+$('#Department').on('click',function() {
+  if ($('#Department:checked').length != 0) {
+    $('#Departments-amount').show();
+    Departments = getValueFromInputData('Departments-amount');
+    Update_total();
+  } else {
+    Departments = 0;
+    updateValueInInputData('',"Departments-amount");
+    Update_total();
+  }
+});
+
+$("[data-name='Departments-amount']").on("input", function () {
+      $('#Departments-amount').show();
+  Departments = getValueFromInputData('Departments-amount');
+  Update_total();
+});
+    
+    $("[data-name='Departments-amount']").parent("label.w-radio").on("click", function () {
+        $('#Departments-amount').show();
+  Departments = getValueFromInputData('Departments-amount');
+  Update_total();
 });
 
 $("[data-name='Do not know']").on("input", function () {
