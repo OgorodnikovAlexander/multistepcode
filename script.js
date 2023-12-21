@@ -1,4 +1,4 @@
-var x, Total, Plan, months, Price, GPU2, Discount, Discount_representation, Quantity, Departments, IVR, Additional, Company, Annual, eSIM, Plan_Quantity, SIM_type, Name_Email, Details, Terms;
+var x, Total, Plan, months, Price, GPU2, Discount, Discount_representation, Quantity, Departments, IVR, Additional, Company, Annual, eSIM, Details, Plan_Quantity, SIM_type, Name_Email, Terms;
 
 // Describe this function...
 function Update_total() {
@@ -216,6 +216,39 @@ $("[data-name='Amount']").on("input", function () {
   Update_total();
 });
 
+$('#IVR').on('click',function() {
+  if ($('#IVR:checked').length != 0) {
+    $('#IVR-amount').show();
+    $('.ivr').show();
+    IVR = getValueFromInputData('IVR-amount');
+    Update_total();
+  } else {
+    $('#IVR-amount').hide();
+    $('.ivr').hide();
+    IVR = 0;
+    Update_total();
+  }
+  $('#next').addClass('active');
+
+      nextTab = 'Details';
+      we_activeTab = $(".w--tab-active").attr("data-w-tab");
+      we_indexOfActiveTab = tabList.indexOf(we_activeTab);
+      we_indexOfNextTab = we_indexOfActiveTab + 1;
+      we_indexOfPrevTab = we_indexOfActiveTab - 1;
+      we_prevTab = tabList[we_indexOfPrevTab];
+      we_amountOfTabs = tabList.length;
+
+      if (we_indexOfNextTab < we_amountOfTabs) {
+        tabList[we_indexOfNextTab] = nextTab;
+      } else {
+        tabList.push(nextTab);
+      }
+      $(we_tabs_next_button).addClass(we_tabs_active_class);
+      $(".w--tab-active").attr('next-tab',nextTab);
+      $($('[data-w-tab=Details]')).attr('prev-tab',we_activeTab);
+
+      });
+
 $("[data-name='SIM type']").on("input", function () {
       $('#next').addClass('active');
 
@@ -267,20 +300,6 @@ $("[data-name='SIM type']").on("input", function () {
     eSIM = 'False';
   } else if (getValueFromInputData('SIM type') == 'eSIM') {
     eSIM = 'True';
-  }
-});
-
-$('#IVR').on('click',function() {
-  if ($('#IVR:checked').length != 0) {
-    $('#IVR-amount').show();
-    $('.ivr').show();
-    IVR = getValueFromInputData('IVR-amount');
-    Update_total();
-  } else {
-    $('#IVR-amount').hide();
-    $('.ivr').hide();
-    IVR = 0;
-    Update_total();
   }
 });
 
@@ -484,7 +503,26 @@ $('#Department').on('click',function() {
     Departments = 0;
     Update_total();
   }
-});
+  $('#next').addClass('active');
+
+      nextTab = 'Details';
+      we_activeTab = $(".w--tab-active").attr("data-w-tab");
+      we_indexOfActiveTab = tabList.indexOf(we_activeTab);
+      we_indexOfNextTab = we_indexOfActiveTab + 1;
+      we_indexOfPrevTab = we_indexOfActiveTab - 1;
+      we_prevTab = tabList[we_indexOfPrevTab];
+      we_amountOfTabs = tabList.length;
+
+      if (we_indexOfNextTab < we_amountOfTabs) {
+        tabList[we_indexOfNextTab] = nextTab;
+      } else {
+        tabList.push(nextTab);
+      }
+      $(we_tabs_next_button).addClass(we_tabs_active_class);
+      $(".w--tab-active").attr('next-tab',nextTab);
+      $($('[data-w-tab=Details]')).attr('prev-tab',we_activeTab);
+
+      });
 
 $("[data-name='Departments-amount']").on("input", function () {
       $('.departments').show();
@@ -508,7 +546,26 @@ $('#GPUcheckbox').on('click',function() {
     GPU2 = 0;
     Update_total();
   }
-});
+  $('#next').addClass('active');
+
+      nextTab = 'Details';
+      we_activeTab = $(".w--tab-active").attr("data-w-tab");
+      we_indexOfActiveTab = tabList.indexOf(we_activeTab);
+      we_indexOfNextTab = we_indexOfActiveTab + 1;
+      we_indexOfPrevTab = we_indexOfActiveTab - 1;
+      we_prevTab = tabList[we_indexOfPrevTab];
+      we_amountOfTabs = tabList.length;
+
+      if (we_indexOfNextTab < we_amountOfTabs) {
+        tabList[we_indexOfNextTab] = nextTab;
+      } else {
+        tabList.push(nextTab);
+      }
+      $(we_tabs_next_button).addClass(we_tabs_active_class);
+      $(".w--tab-active").attr('next-tab',nextTab);
+      $($('[data-w-tab=Details]')).attr('prev-tab',we_activeTab);
+
+      });
 
 $("[data-name='Do not know']").on("input", function () {
       if ($('#dontknow:checked').length != 0) {
@@ -530,7 +587,26 @@ $("[data-name='Do not know']").on("input", function () {
     GPU2 = 0;
     Update_total();
   }
-});
+  $('#next').addClass('active');
+
+      nextTab = 'Details';
+      we_activeTab = $(".w--tab-active").attr("data-w-tab");
+      we_indexOfActiveTab = tabList.indexOf(we_activeTab);
+      we_indexOfNextTab = we_indexOfActiveTab + 1;
+      we_indexOfPrevTab = we_indexOfActiveTab - 1;
+      we_prevTab = tabList[we_indexOfPrevTab];
+      we_amountOfTabs = tabList.length;
+
+      if (we_indexOfNextTab < we_amountOfTabs) {
+        tabList[we_indexOfNextTab] = nextTab;
+      } else {
+        tabList.push(nextTab);
+      }
+      $(we_tabs_next_button).addClass(we_tabs_active_class);
+      $(".w--tab-active").attr('next-tab',nextTab);
+      $($('[data-w-tab=Details]')).attr('prev-tab',we_activeTab);
+
+      });
     
     $("[data-name='Do not know']").parent("label.w-radio").on("click", function () {
         if ($('#dontknow:checked').length != 0) {
@@ -552,4 +628,23 @@ $("[data-name='Do not know']").on("input", function () {
     GPU2 = 0;
     Update_total();
   }
-});
+  $('#next').addClass('active');
+
+      nextTab = 'Details';
+      we_activeTab = $(".w--tab-active").attr("data-w-tab");
+      we_indexOfActiveTab = tabList.indexOf(we_activeTab);
+      we_indexOfNextTab = we_indexOfActiveTab + 1;
+      we_indexOfPrevTab = we_indexOfActiveTab - 1;
+      we_prevTab = tabList[we_indexOfPrevTab];
+      we_amountOfTabs = tabList.length;
+
+      if (we_indexOfNextTab < we_amountOfTabs) {
+        tabList[we_indexOfNextTab] = nextTab;
+      } else {
+        tabList.push(nextTab);
+      }
+      $(we_tabs_next_button).addClass(we_tabs_active_class);
+      $(".w--tab-active").attr('next-tab',nextTab);
+      $($('[data-w-tab=Details]')).attr('prev-tab',we_activeTab);
+
+      });
