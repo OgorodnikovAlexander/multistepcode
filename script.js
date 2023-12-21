@@ -502,20 +502,9 @@ $("[data-name='IVR-amount']").on("input", function () {
   Update_total();
 });
 
-$("[data-name='GPU-checkbox']").on("input", function () {
-      console.log('hui');
-  if ($('#GPU-checkbox:checked').length != 0) {
-    GPU2 = Get_GPU_Price();
-    Update_total();
-  } else {
-    GPU2 = Get_GPU_Price();
-    Update_total();
-  }
-});
-    
-    $("[data-name='GPU-checkbox']").parent("label.w-radio").on("click", function () {
-        console.log('hui');
-  if ($('#GPU-checkbox:checked').length != 0) {
+$('#GPUcheckbox').on('click',function() {
+  console.log('hui');
+  if ($('#GPUcheckbox:checked').length != 0) {
     GPU2 = Get_GPU_Price();
     Update_total();
   } else {
