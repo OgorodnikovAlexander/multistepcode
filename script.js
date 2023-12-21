@@ -438,6 +438,30 @@ var we_tabs_next_button = '#next';
 
 
     }
+$("[data-name='IVR']").on("input", function () {
+      if ($('#IVR:checked').length != 0) {
+    $('#IVR-amount').show();
+    IVR = getValueFromInputData('IVR-amount');
+    Update_total();
+  } else {
+    $('#IVR-amount').hide();
+    IVR = 0;
+    Update_total();
+  }
+});
+    
+    $("[data-name='IVR']").parent("label.w-radio").on("click", function () {
+        if ($('#IVR:checked').length != 0) {
+    $('#IVR-amount').show();
+    IVR = getValueFromInputData('IVR-amount');
+    Update_total();
+  } else {
+    $('#IVR-amount').hide();
+    IVR = 0;
+    Update_total();
+  }
+});
+
 $("[data-name='Plan']").on("input", function () {
       Plan = Get__Plan_Prise(getValueFromInputData('Plan'));
   Update_total();
@@ -454,26 +478,6 @@ $('#GPU').on('click',function() {
     Update_total();
   } else {
     GPU2 = 0;
-    Update_total();
-  }
-});
-
-$("[data-name='IVR']").on("input", function () {
-      if ($('#IVR:checked').length != 0) {
-    $('#IVR-amount').show();
-  } else {
-    $('#IVR-amount').hide();
-    IVR = 0;
-    Update_total();
-  }
-});
-    
-    $("[data-name='IVR']").parent("label.w-radio").on("click", function () {
-        if ($('#IVR:checked').length != 0) {
-    $('#IVR-amount').show();
-  } else {
-    $('#IVR-amount').hide();
-    IVR = 0;
     Update_total();
   }
 });
