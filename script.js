@@ -1,4 +1,4 @@
-var x, Total, Plan, months, Price, GPU2, Discount, Discount_representation, Quantity, Departments, IVR, Additional, Company, Annual, eSIM, Details, Plan_Quantity, SIM_type, Name_Email, Terms;
+var x, Total, Plan, months, Price, GPU2, Discount, Discount_representation, Quantity, Departments, IVR, Details, Additional, Company, Annual, eSIM, Plan_Quantity, SIM_type, Terms, Name_Email;
 
 // Describe this function...
 function Update_total() {
@@ -34,6 +34,34 @@ function Get_GPU_Price() {
   console.log(GPU2);
   return GPU2;
 }
+
+// Describe this function...
+function Check_Details() {
+  if($('.w--tab-active').attr('data-w-tab')=='Details') {
+          if (getValueFromInputData('SIRET') != '' && getValueFromInputData('IBAN') != '') {
+      console.log('SIRET+IBAN');
+      $('#next').addClass('active');
+
+          nextTab = 'Terms';
+          we_activeTab = $(".w--tab-active").attr("data-w-tab");
+          we_indexOfActiveTab = tabList.indexOf(we_activeTab);
+          we_indexOfNextTab = we_indexOfActiveTab + 1;
+          we_indexOfPrevTab = we_indexOfActiveTab - 1;
+          we_prevTab = tabList[we_indexOfPrevTab];
+          we_amountOfTabs = tabList.length;
+
+          if (we_indexOfNextTab < we_amountOfTabs) {
+            tabList[we_indexOfNextTab] = nextTab;
+          } else {
+            tabList.push(nextTab);
+          }
+          $(we_tabs_next_button).addClass(we_tabs_active_class);
+          $(".w--tab-active").attr('next-tab',nextTab);
+          $($('[data-w-tab=Terms]')).attr('prev-tab',we_activeTab);
+
+          }
+
+      }}
 
 // Describe this function...
 function Get__Plan_Prise(x) {
@@ -292,6 +320,14 @@ $("[data-name='SIM type']").on("input", function () {
   }
 });
 
+$("[data-name='SIRET']").on("input", function () {
+      Check_Details();
+});
+    
+    $("[data-name='SIRET']").parent("label.w-radio").on("click", function () {
+        Check_Details();
+});
+
 updateValueInInputData(38,"Plan");
 months = 12;
 Plan = 38;
@@ -427,30 +463,6 @@ var we_tabs_next_button = '#next';
       $($('[data-w-tab=Details]')).attr('prev-tab',we_activeTab);
 
 
-    }if($('.w--tab-active').attr('data-w-tab')=='Details') {
-        if (getValueFromInputData('SIRET') != '' && getValueFromInputData('IBAN') != '') {
-    console.log('SIRET+IBAN');
-    $('#next').addClass('active');
-
-        nextTab = 'Terms';
-        we_activeTab = $(".w--tab-active").attr("data-w-tab");
-        we_indexOfActiveTab = tabList.indexOf(we_activeTab);
-        we_indexOfNextTab = we_indexOfActiveTab + 1;
-        we_indexOfPrevTab = we_indexOfActiveTab - 1;
-        we_prevTab = tabList[we_indexOfPrevTab];
-        we_amountOfTabs = tabList.length;
-
-        if (we_indexOfNextTab < we_amountOfTabs) {
-          tabList[we_indexOfNextTab] = nextTab;
-        } else {
-          tabList.push(nextTab);
-        }
-        $(we_tabs_next_button).addClass(we_tabs_active_class);
-        $(".w--tab-active").attr('next-tab',nextTab);
-        $($('[data-w-tab=Terms]')).attr('prev-tab',we_activeTab);
-
-        }
-
     }if($('.w--tab-active').attr('data-w-tab')=='Name_Email') {
         $('#back').hide();
   $('#next').removeClass('active');
@@ -470,6 +482,14 @@ $("[data-name='Plan']").on("input", function () {
         Plan = Get__Plan_Prise(getValueFromInputData('Plan'));
   GPU2 = Get_GPU_Price();
   Update_total();
+});
+
+$("[data-name='IBAN']").on("input", function () {
+      Check_Details();
+});
+    
+    $("[data-name='IBAN']").parent("label.w-radio").on("click", function () {
+        Check_Details();
 });
 
 function Multi_Step_Form_form_change() {
