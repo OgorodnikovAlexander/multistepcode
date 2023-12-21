@@ -1,4 +1,4 @@
-var x, Total, Plan, months, Price, GPU2, Discount, Discount_representation, Quantity, IVR, Departments, Additional, Company, Annual, eSIM, Plan_Quantity, SIM_type, Name_Email, Details;
+var x, Total, Plan, months, Price, GPU2, Discount, Discount_representation, Quantity, Departments, IVR, Additional, Company, Annual, eSIM, Plan_Quantity, SIM_type, Name_Email, Details;
 
 // Describe this function...
 function Update_total() {
@@ -221,15 +221,13 @@ $("[data-name='Email']").on("input", function () {
 });
 
 $("[data-name='Departments-amount']").on("input", function () {
-      updateValueInInputData(1,"Department");
-  $('#Departments-amount').show();
+      $('#Departments-amount').show();
   Departments = getValueFromInputData('Departments-amount');
   Update_total();
 });
     
     $("[data-name='Departments-amount']").parent("label.w-radio").on("click", function () {
-        updateValueInInputData(1,"Department");
-  $('#Departments-amount').show();
+        $('#Departments-amount').show();
   Departments = getValueFromInputData('Departments-amount');
   Update_total();
 });
@@ -508,7 +506,7 @@ $("[data-name='IVR-amount']").on("input", function () {
   Update_total();
 });
 
-$("[data-name='GPU']").on("input", function () {
+$("[data-name='GPU1']").on("input", function () {
       console.log(Plan);
   if ($('#GPU:checked').length != 0) {
     GPU2 = Get_GPU_Price();
@@ -519,7 +517,7 @@ $("[data-name='GPU']").on("input", function () {
   }
 });
     
-    $("[data-name='GPU']").parent("label.w-radio").on("click", function () {
+    $("[data-name='GPU1']").parent("label.w-radio").on("click", function () {
         console.log(Plan);
   if ($('#GPU:checked').length != 0) {
     GPU2 = Get_GPU_Price();
