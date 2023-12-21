@@ -442,16 +442,6 @@ $("[data-name='Plan']").on("input", function () {
   Update_total();
 });
 
-$('#GPU').on('click',function() {
-  if ($('#GPU:checked').length != 0) {
-    GPU2 = 650;
-    Update_total();
-  } else {
-    GPU2 = 0;
-    Update_total();
-  }
-});
-
 $("[data-name='IVR-amount']").on("input", function () {
       $('#IVR-amount').show();
   IVR = getValueFromInputData('IVR-amount');
