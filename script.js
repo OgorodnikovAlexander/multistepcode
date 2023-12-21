@@ -1,4 +1,4 @@
-var x, Total, Plan, months, Price, GPU2, Discount, Discount_representation, Quantity, Departments, IVR, Details, Additional, Company, Annual, eSIM, Plan_Quantity, SIM_type, Terms, Name_Email;
+var x, Total, Plan, months, Price, GPU2, Discount, Discount_representation, Quantity, Departments, IVR, Additional, Details, Company, Annual, eSIM, Plan_Quantity, SIM_type, Terms, Name_Email;
 
 // Describe this function...
 function Update_total() {
@@ -37,6 +37,7 @@ function Get_GPU_Price() {
 
 // Describe this function...
 function Check_Details() {
+  console.log('SIRET+IBAN');
   if($('.w--tab-active').attr('data-w-tab')=='Details') {
           if (getValueFromInputData('SIRET') != '' && getValueFromInputData('IBAN') != '') {
       console.log('SIRET+IBAN');
