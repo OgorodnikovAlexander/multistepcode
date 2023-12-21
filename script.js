@@ -1,4 +1,4 @@
-var x, Total, Plan, months, Price, GPU2, Discount, Discount_representation, Name_Email, Quantity, Departments, IVR, Company, Additional, Details, Annual, eSIM, Plan_Quantity, SIM_type, Terms;
+var x, Total, Plan, months, Price, GPU2, Discount, Discount_representation, Quantity, Departments, IVR, Additional, Company, Annual, eSIM, Details, Plan_Quantity, SIM_type, Name_Email, Terms;
 
 // Describe this function...
 function Update_total() {
@@ -427,6 +427,38 @@ var we_tabs_next_button = '#next';
       $($('[data-w-tab=Details]')).attr('prev-tab',we_activeTab);
 
 
+    }if($('.w--tab-active').attr('data-w-tab')=='Details') {
+        if (getValueFromInputData('SIRET') != '' && getValueFromInputData('IBAN') != '') {
+    console.log('SIRET+IBAN');
+    $('#next').addClass('active');
+
+        nextTab = 'Terms';
+        we_activeTab = $(".w--tab-active").attr("data-w-tab");
+        we_indexOfActiveTab = tabList.indexOf(we_activeTab);
+        we_indexOfNextTab = we_indexOfActiveTab + 1;
+        we_indexOfPrevTab = we_indexOfActiveTab - 1;
+        we_prevTab = tabList[we_indexOfPrevTab];
+        we_amountOfTabs = tabList.length;
+
+        if (we_indexOfNextTab < we_amountOfTabs) {
+          tabList[we_indexOfNextTab] = nextTab;
+        } else {
+          tabList.push(nextTab);
+        }
+        $(we_tabs_next_button).addClass(we_tabs_active_class);
+        $(".w--tab-active").attr('next-tab',nextTab);
+        $($('[data-w-tab=Terms]')).attr('prev-tab',we_activeTab);
+
+        }
+
+    }if($('.w--tab-active').attr('data-w-tab')=='Name_Email') {
+        $('#back').hide();
+  $('#next').removeClass('active');
+
+    }if($('.w--tab-active').attr('data-w-tab')=='Company') {
+        $('#back').show();
+  $('#next').removeClass('active');
+
     }
 $("[data-name='Plan']").on("input", function () {
       Plan = Get__Plan_Prise(getValueFromInputData('Plan'));
@@ -443,38 +475,7 @@ $("[data-name='Plan']").on("input", function () {
 function Multi_Step_Form_form_change() {
       Add_order_line();
 
-      if($('.w--tab-active').attr('data-w-tab')=='Name_Email') {
-          $('#back').hide();
-    $('#next').removeClass('active');
-
-      }if($('.w--tab-active').attr('data-w-tab')=='Company') {
-          $('#back').show();
-    $('#next').removeClass('active');
-
-      }if($('.w--tab-active').attr('data-w-tab')=='Details') {
-          if (getValueFromInputData('SIRET') != '' && getValueFromInputData('IBAN') != '') {
-      $('#next').addClass('active');
-
-          nextTab = 'Terms';
-          we_activeTab = $(".w--tab-active").attr("data-w-tab");
-          we_indexOfActiveTab = tabList.indexOf(we_activeTab);
-          we_indexOfNextTab = we_indexOfActiveTab + 1;
-          we_indexOfPrevTab = we_indexOfActiveTab - 1;
-          we_prevTab = tabList[we_indexOfPrevTab];
-          we_amountOfTabs = tabList.length;
-
-          if (we_indexOfNextTab < we_amountOfTabs) {
-            tabList[we_indexOfNextTab] = nextTab;
-          } else {
-            tabList.push(nextTab);
-          }
-          $(we_tabs_next_button).addClass(we_tabs_active_class);
-          $(".w--tab-active").attr('next-tab',nextTab);
-          $($('[data-w-tab=Terms]')).attr('prev-tab',we_activeTab);
-
-          }
-
-      }}
+    }
 
   $("[data-name='Multi Step Form'] input").on("input", function () {
     Multi_Step_Form_form_change();
