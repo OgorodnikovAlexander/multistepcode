@@ -503,6 +503,7 @@ $("[data-name='IVR-amount']").on("input", function () {
 });
 
 $('#GPUcheckbox').on('click',function() {
+  console.log($('#GPUcheckbox:checked').length != 0);
   if ($('#GPUcheckbox:checked').length != 0) {
     GPU2 = Get_GPU_Price();
     Update_total();
