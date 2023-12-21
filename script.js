@@ -26,6 +26,7 @@ function Get_GPU_Price() {
   } else if (Plan == 94) {
     GPU2 = 550;
   }
+  console.log(GPU2);
   return GPU2;
 }
 
@@ -502,8 +503,7 @@ $("[data-name='IVR-amount']").on("input", function () {
 });
 
 $("[data-name='GPU1']").on("input", function () {
-      console.log(Plan);
-  if ($('#GPU:checked').length != 0) {
+      if ($('#GPU:checked').length != 0) {
     GPU2 = Get_GPU_Price();
     Update_total();
   } else {
@@ -513,8 +513,7 @@ $("[data-name='GPU1']").on("input", function () {
 });
     
     $("[data-name='GPU1']").parent("label.w-radio").on("click", function () {
-        console.log(Plan);
-  if ($('#GPU:checked').length != 0) {
+        if ($('#GPU:checked').length != 0) {
     GPU2 = Get_GPU_Price();
     Update_total();
   } else {
