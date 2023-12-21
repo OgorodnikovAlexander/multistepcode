@@ -507,7 +507,6 @@ $('#Department').on('click',function() {
     Update_total();
   } else {
     Departments = 0;
-    updateValueInInputData('',"Departments-amount");
     Update_total();
   }
 });
