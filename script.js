@@ -1,4 +1,4 @@
-var x, Total, Plan, months, Price, Discount, Discount_representation, GPU2, Quantity, Departments, Additional, IVR, Company, Annual, eSIM, Plan_Quantity, SIM_type, Name_Email, Details;
+var x, Total, Plan, months, Price, Discount, Discount_representation, GPU2, Quantity, IVR, Departments, Additional, Company, Annual, eSIM, Plan_Quantity, SIM_type, Name_Email, Details;
 
 // Describe this function...
 function Update_total() {
@@ -159,30 +159,6 @@ $('#Annual').on('click',function() {
   $('[bloc=Discount]').text(Discount_representation);
 });
 
-$("[data-name='Departments-amount']").on("input", function () {
-      if ($('#Department:checked').length != 0) {
-    $('#Departments-amount').show();
-    Departments = getValueFromInputData('Departments-amount');
-    Update_total();
-  } else {
-    $('#Departments-amount').hide();
-    Departments = 0;
-    Update_total();
-  }
-});
-    
-    $("[data-name='Departments-amount']").parent("label.w-radio").on("click", function () {
-        if ($('#Department:checked').length != 0) {
-    $('#Departments-amount').show();
-    Departments = getValueFromInputData('Departments-amount');
-    Update_total();
-  } else {
-    $('#Departments-amount').hide();
-    Departments = 0;
-    Update_total();
-  }
-});
-
 function Multi_Step_Form_form_change() {
       Add_order_line();
 
@@ -204,6 +180,8 @@ $("[data-name='Department']").on("input", function () {
     $('#Departments-amount').show();
   } else {
     $('#Departments-amount').hide();
+    Departments = 0;
+    Update_total();
   }
 });
     
@@ -212,6 +190,8 @@ $("[data-name='Department']").on("input", function () {
     $('#Departments-amount').show();
   } else {
     $('#Departments-amount').hide();
+    Departments = 0;
+    Update_total();
   }
 });
 
@@ -221,6 +201,20 @@ $("[data-name='Email']").on("input", function () {
     
     $("[data-name='Email']").parent("label.w-radio").on("click", function () {
         Check_Email();
+});
+
+$("[data-name='Departments-amount']").on("input", function () {
+      updateValueInInputData(1,"Department");
+  $('#Departments-amount').show();
+  Departments = getValueFromInputData('Departments-amount');
+  Update_total();
+});
+    
+    $("[data-name='Departments-amount']").parent("label.w-radio").on("click", function () {
+        updateValueInInputData(1,"Department");
+  $('#Departments-amount').show();
+  Departments = getValueFromInputData('Departments-amount');
+  Update_total();
 });
 
 $("[data-name='Company']").on("input", function () {
@@ -470,6 +464,8 @@ $("[data-name='IVR']").on("input", function () {
     $('#IVR-amount').show();
   } else {
     $('#IVR-amount').hide();
+    IVR = 0;
+    Update_total();
   }
 });
     
@@ -478,31 +474,21 @@ $("[data-name='IVR']").on("input", function () {
     $('#IVR-amount').show();
   } else {
     $('#IVR-amount').hide();
+    IVR = 0;
+    Update_total();
   }
 });
 
 $("[data-name='IVR-amount']").on("input", function () {
-      if ($('#IVR:checked').length != 0) {
-    $('#IVR-amount').show();
-    IVR = getValueFromInputData('IVR-amount');
-    Update_total();
-  } else {
-    $('#IVR-amount').hide();
-    IVR = 0;
-    Update_total();
-  }
+      $('#IVR-amount').show();
+  IVR = getValueFromInputData('IVR-amount');
+  Update_total();
 });
     
     $("[data-name='IVR-amount']").parent("label.w-radio").on("click", function () {
-        if ($('#IVR:checked').length != 0) {
-    $('#IVR-amount').show();
-    IVR = getValueFromInputData('IVR-amount');
-    Update_total();
-  } else {
-    $('#IVR-amount').hide();
-    IVR = 0;
-    Update_total();
-  }
+        $('#IVR-amount').show();
+  IVR = getValueFromInputData('IVR-amount');
+  Update_total();
 });
 
 $("[data-name='GPU']").on("input", function () {
@@ -510,6 +496,8 @@ $("[data-name='GPU']").on("input", function () {
     $('#GPU-amount').show();
   } else {
     $('#GPU-amount').hide();
+    GPU2 = 0;
+    Update_total();
   }
 });
     
@@ -518,31 +506,21 @@ $("[data-name='GPU']").on("input", function () {
     $('#GPU-amount').show();
   } else {
     $('#GPU-amount').hide();
+    GPU2 = 0;
+    Update_total();
   }
 });
 
 $("[data-name='IVR-amount']").on("input", function () {
-      if ($('#GPU:checked').length != 0) {
-    $('#GPU-amount').show();
-    GPU2 = getValueFromInputData('GPU-amount');
-    Update_total();
-  } else {
-    $('#GPU-amount').hide();
-    GPU2 = 0;
-    Update_total();
-  }
+      $('#GPU-amount').show();
+  GPU2 = getValueFromInputData('GPU-amount');
+  Update_total();
 });
     
     $("[data-name='IVR-amount']").parent("label.w-radio").on("click", function () {
-        if ($('#GPU:checked').length != 0) {
-    $('#GPU-amount').show();
-    GPU2 = getValueFromInputData('GPU-amount');
-    Update_total();
-  } else {
-    $('#GPU-amount').hide();
-    GPU2 = 0;
-    Update_total();
-  }
+        $('#GPU-amount').show();
+  GPU2 = getValueFromInputData('GPU-amount');
+  Update_total();
 });
 
 $("[data-name='Do not know']").on("input", function () {
