@@ -479,12 +479,10 @@ $("[data-name='Departments-amount']").on("input", function () {
 
 $('#GPUcheckbox').on('click',function() {
   if ($('#GPUcheckbox:checked').length != 0) {
-    $('#gpu-div').show();
     $('.gpu').show();
     GPU2 = Get_GPU_Price();
     Update_total();
   } else {
-    $('#GPU-amount').hide();
     $('.gpu').hide();
     GPU2 = 0;
     Update_total();
