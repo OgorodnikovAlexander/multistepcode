@@ -198,6 +198,7 @@ $("[data-name='Departments-amount']").on("input", function () {
     Update_total();
   } else {
     $('#Departments-amount').hide();
+    Departments = 0;
   }
 });
     
@@ -208,6 +209,7 @@ $("[data-name='Departments-amount']").on("input", function () {
     Update_total();
   } else {
     $('#Departments-amount').hide();
+    Departments = 0;
   }
 });
 
@@ -484,6 +486,7 @@ $("[data-name='IVR-amount']").on("input", function () {
     Update_total();
   } else {
     $('#IVR-amount').hide();
+    IVR = 0;
   }
 });
     
@@ -494,6 +497,7 @@ $("[data-name='IVR-amount']").on("input", function () {
     Update_total();
   } else {
     $('#IVR-amount').hide();
+    IVR = 0;
   }
 });
 
@@ -504,6 +508,7 @@ $("[data-name='IVR-amount']").on("input", function () {
     Update_total();
   } else {
     $('#GPU-amount').hide();
+    GPU2 = 0;
   }
 });
     
@@ -514,6 +519,7 @@ $("[data-name='IVR-amount']").on("input", function () {
     Update_total();
   } else {
     $('#GPU-amount').hide();
+    GPU2 = 0;
   }
 });
 
@@ -530,5 +536,37 @@ $("[data-name='GPU']").on("input", function () {
     $('#GPU-amount').show();
   } else {
     $('#GPU-amount').hide();
+  }
+});
+
+$("[data-name='Do not know']").on("input", function () {
+      if ($('#dontknow:checked').length != 0) {
+    $('#Departments-amount').hide();
+    Departments = 0;
+    $('#IVR-amount').hide();
+    IVR = 0;
+    $('#GPU-amount').hide();
+    GPU2 = 0;
+    Update_total();
+  } else {
+    updateValueInInputData('',"Departments-amount");
+    updateValueInInputData('',"IVR-amount");
+    updateValueInInputData('',"GPU-amount");
+  }
+});
+    
+    $("[data-name='Do not know']").parent("label.w-radio").on("click", function () {
+        if ($('#dontknow:checked').length != 0) {
+    $('#Departments-amount').hide();
+    Departments = 0;
+    $('#IVR-amount').hide();
+    IVR = 0;
+    $('#GPU-amount').hide();
+    GPU2 = 0;
+    Update_total();
+  } else {
+    updateValueInInputData('',"Departments-amount");
+    updateValueInInputData('',"IVR-amount");
+    updateValueInInputData('',"GPU-amount");
   }
 });
