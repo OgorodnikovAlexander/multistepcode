@@ -494,6 +494,8 @@ $("[data-name='IVR-amount']").on("input", function () {
 $("[data-name='GPU']").on("input", function () {
       if ($('#GPU:checked').length != 0) {
     $('#GPU-amount').show();
+    GPU2 = getValueFromInputData('GPU-amount');
+    Update_total();
   } else {
     $('#GPU-amount').hide();
     GPU2 = 0;
@@ -504,6 +506,8 @@ $("[data-name='GPU']").on("input", function () {
     $("[data-name='GPU']").parent("label.w-radio").on("click", function () {
         if ($('#GPU:checked').length != 0) {
     $('#GPU-amount').show();
+    GPU2 = getValueFromInputData('GPU-amount');
+    Update_total();
   } else {
     $('#GPU-amount').hide();
     GPU2 = 0;
