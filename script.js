@@ -1,4 +1,4 @@
-var x, Total, Plan, months, Price, GPU2, Discount, Discount_representation, Quantity, Departments, IVR, Additional, Company, Annual, eSIM, Details, Plan_Quantity, SIM_type, Name_Email, Terms;
+var x, Total, Plan, months, Price, GPU2, Discount, Discount_representation, Name_Email, Quantity, Departments, IVR, Company, Additional, Plan_Quantity, Annual, eSIM, Details, SIM_type, Terms;
 
 // Describe this function...
 function Update_total() {
@@ -175,22 +175,6 @@ $('#Annual').on('click',function() {
     Update_total();
   }
   $('[bloc=Discount]').text(Discount_representation);
-});
-
-function Multi_Step_Form_form_change() {
-      Add_order_line();
-
-    }
-
-  $("[data-name='Multi Step Form'] input").on("input", function () {
-    Multi_Step_Form_form_change();
-  });
-
-  var clickedRadioButtonValue = $("input", this).val();
-
-$("[data-name='Multi Step Form'] label.w-radio").on("click", function () {
-  clickedRadioButtonValue = $("input", this).val();
-  Multi_Step_Form_form_change();
 });
 
 $("[data-name='Email']").on("input", function () {
@@ -380,99 +364,6 @@ var we_tabs_next_button = '#next';
       $(tab).addClass("w--tab-active");
       $(tab_link).siblings("a").removeClass("w--current");
       $(tab_link).addClass("w--current");
-    }if($('.w--tab-active').attr('data-w-tab')=='Name_Email') {
-        $('#back').hide();
-  console.log('132465u');
-  $('#next').removeClass('active');
-
-    }if($('.w--tab-active').attr('data-w-tab')=='Company') {
-        $('#back').show();
-  $('#next').removeClass('active');
-
-    }if($('.w--tab-active').attr('data-w-tab')=='Plan_Quantity') {
-        $('#next').removeClass('active');
-
-      nextTab = 'Plan_Quantity';
-      we_activeTab = $(".w--tab-active").attr("data-w-tab");
-      we_indexOfActiveTab = tabList.indexOf(we_activeTab);
-      we_indexOfNextTab = we_indexOfActiveTab + 1;
-      we_indexOfPrevTab = we_indexOfActiveTab - 1;
-      we_prevTab = tabList[we_indexOfPrevTab];
-      we_amountOfTabs = tabList.length;
-
-      if (we_indexOfNextTab < we_amountOfTabs) {
-        tabList[we_indexOfNextTab] = nextTab;
-      } else {
-        tabList.push(nextTab);
-      }
-      $(we_tabs_next_button).addClass(we_tabs_active_class);
-      $(".w--tab-active").attr('next-tab',nextTab);
-      $($('[data-w-tab=Plan_Quantity]')).attr('prev-tab',we_activeTab);
-
-
-    }if($('.w--tab-active').attr('data-w-tab')=='SIM_type') {
-        $('#next').addClass('active');
-
-      nextTab = 'Additional';
-      we_activeTab = $(".w--tab-active").attr("data-w-tab");
-      we_indexOfActiveTab = tabList.indexOf(we_activeTab);
-      we_indexOfNextTab = we_indexOfActiveTab + 1;
-      we_indexOfPrevTab = we_indexOfActiveTab - 1;
-      we_prevTab = tabList[we_indexOfPrevTab];
-      we_amountOfTabs = tabList.length;
-
-      if (we_indexOfNextTab < we_amountOfTabs) {
-        tabList[we_indexOfNextTab] = nextTab;
-      } else {
-        tabList.push(nextTab);
-      }
-      $(we_tabs_next_button).addClass(we_tabs_active_class);
-      $(".w--tab-active").attr('next-tab',nextTab);
-      $($('[data-w-tab=Additional]')).attr('prev-tab',we_activeTab);
-
-
-    }if($('.w--tab-active').attr('data-w-tab')=='Additional') {
-        $('#next').addClass('active');
-
-      nextTab = 'Details';
-      we_activeTab = $(".w--tab-active").attr("data-w-tab");
-      we_indexOfActiveTab = tabList.indexOf(we_activeTab);
-      we_indexOfNextTab = we_indexOfActiveTab + 1;
-      we_indexOfPrevTab = we_indexOfActiveTab - 1;
-      we_prevTab = tabList[we_indexOfPrevTab];
-      we_amountOfTabs = tabList.length;
-
-      if (we_indexOfNextTab < we_amountOfTabs) {
-        tabList[we_indexOfNextTab] = nextTab;
-      } else {
-        tabList.push(nextTab);
-      }
-      $(we_tabs_next_button).addClass(we_tabs_active_class);
-      $(".w--tab-active").attr('next-tab',nextTab);
-      $($('[data-w-tab=Details]')).attr('prev-tab',we_activeTab);
-
-
-    }if($('.w--tab-active').attr('data-w-tab')=='Details') {
-        $('#next').addClass('active');
-
-      nextTab = 'Terms';
-      we_activeTab = $(".w--tab-active").attr("data-w-tab");
-      we_indexOfActiveTab = tabList.indexOf(we_activeTab);
-      we_indexOfNextTab = we_indexOfActiveTab + 1;
-      we_indexOfPrevTab = we_indexOfActiveTab - 1;
-      we_prevTab = tabList[we_indexOfPrevTab];
-      we_amountOfTabs = tabList.length;
-
-      if (we_indexOfNextTab < we_amountOfTabs) {
-        tabList[we_indexOfNextTab] = nextTab;
-      } else {
-        tabList.push(nextTab);
-      }
-      $(we_tabs_next_button).addClass(we_tabs_active_class);
-      $(".w--tab-active").attr('next-tab',nextTab);
-      $($('[data-w-tab=Terms]')).attr('prev-tab',we_activeTab);
-
-
     }
 $("[data-name='Plan']").on("input", function () {
       Plan = Get__Plan_Prise(getValueFromInputData('Plan'));
@@ -484,6 +375,116 @@ $("[data-name='Plan']").on("input", function () {
         Plan = Get__Plan_Prise(getValueFromInputData('Plan'));
   GPU2 = Get_GPU_Price();
   Update_total();
+});
+
+function Multi_Step_Form_form_change() {
+      Add_order_line();
+
+      if($('.w--tab-active').attr('data-w-tab')=='Name_Email') {
+          $('#back').hide();
+    $('#next').removeClass('active');
+
+      }if($('.w--tab-active').attr('data-w-tab')=='Company') {
+          $('#back').show();
+    $('#next').removeClass('active');
+
+      }if($('.w--tab-active').attr('data-w-tab')=='Plan_Quantity') {
+          $('#next').removeClass('active');
+
+        nextTab = 'Plan_Quantity';
+        we_activeTab = $(".w--tab-active").attr("data-w-tab");
+        we_indexOfActiveTab = tabList.indexOf(we_activeTab);
+        we_indexOfNextTab = we_indexOfActiveTab + 1;
+        we_indexOfPrevTab = we_indexOfActiveTab - 1;
+        we_prevTab = tabList[we_indexOfPrevTab];
+        we_amountOfTabs = tabList.length;
+
+        if (we_indexOfNextTab < we_amountOfTabs) {
+          tabList[we_indexOfNextTab] = nextTab;
+        } else {
+          tabList.push(nextTab);
+        }
+        $(we_tabs_next_button).addClass(we_tabs_active_class);
+        $(".w--tab-active").attr('next-tab',nextTab);
+        $($('[data-w-tab=Plan_Quantity]')).attr('prev-tab',we_activeTab);
+
+
+      }if($('.w--tab-active').attr('data-w-tab')=='SIM_type') {
+          $('#next').addClass('active');
+
+        nextTab = 'Additional';
+        we_activeTab = $(".w--tab-active").attr("data-w-tab");
+        we_indexOfActiveTab = tabList.indexOf(we_activeTab);
+        we_indexOfNextTab = we_indexOfActiveTab + 1;
+        we_indexOfPrevTab = we_indexOfActiveTab - 1;
+        we_prevTab = tabList[we_indexOfPrevTab];
+        we_amountOfTabs = tabList.length;
+
+        if (we_indexOfNextTab < we_amountOfTabs) {
+          tabList[we_indexOfNextTab] = nextTab;
+        } else {
+          tabList.push(nextTab);
+        }
+        $(we_tabs_next_button).addClass(we_tabs_active_class);
+        $(".w--tab-active").attr('next-tab',nextTab);
+        $($('[data-w-tab=Additional]')).attr('prev-tab',we_activeTab);
+
+
+      }if($('.w--tab-active').attr('data-w-tab')=='Additional') {
+          $('#next').addClass('active');
+
+        nextTab = 'Details';
+        we_activeTab = $(".w--tab-active").attr("data-w-tab");
+        we_indexOfActiveTab = tabList.indexOf(we_activeTab);
+        we_indexOfNextTab = we_indexOfActiveTab + 1;
+        we_indexOfPrevTab = we_indexOfActiveTab - 1;
+        we_prevTab = tabList[we_indexOfPrevTab];
+        we_amountOfTabs = tabList.length;
+
+        if (we_indexOfNextTab < we_amountOfTabs) {
+          tabList[we_indexOfNextTab] = nextTab;
+        } else {
+          tabList.push(nextTab);
+        }
+        $(we_tabs_next_button).addClass(we_tabs_active_class);
+        $(".w--tab-active").attr('next-tab',nextTab);
+        $($('[data-w-tab=Details]')).attr('prev-tab',we_activeTab);
+
+
+      }if($('.w--tab-active').attr('data-w-tab')=='Details') {
+          if (getValueFromInputData('SIRET') != '' && getValueFromInputData('IBAN') != '') {
+      $('#next').addClass('active');
+
+          nextTab = 'Terms';
+          we_activeTab = $(".w--tab-active").attr("data-w-tab");
+          we_indexOfActiveTab = tabList.indexOf(we_activeTab);
+          we_indexOfNextTab = we_indexOfActiveTab + 1;
+          we_indexOfPrevTab = we_indexOfActiveTab - 1;
+          we_prevTab = tabList[we_indexOfPrevTab];
+          we_amountOfTabs = tabList.length;
+
+          if (we_indexOfNextTab < we_amountOfTabs) {
+            tabList[we_indexOfNextTab] = nextTab;
+          } else {
+            tabList.push(nextTab);
+          }
+          $(we_tabs_next_button).addClass(we_tabs_active_class);
+          $(".w--tab-active").attr('next-tab',nextTab);
+          $($('[data-w-tab=Terms]')).attr('prev-tab',we_activeTab);
+
+          }
+
+      }}
+
+  $("[data-name='Multi Step Form'] input").on("input", function () {
+    Multi_Step_Form_form_change();
+  });
+
+  var clickedRadioButtonValue = $("input", this).val();
+
+$("[data-name='Multi Step Form'] label.w-radio").on("click", function () {
+  clickedRadioButtonValue = $("input", this).val();
+  Multi_Step_Form_form_change();
 });
 
 $("[data-name='IVR-amount']").on("input", function () {
