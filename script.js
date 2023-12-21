@@ -1,4 +1,4 @@
-var x, Total, Plan, months, Price, GPU2, Discount, Discount_representation, Quantity, Departments, IVR, Additional, Company, Annual, eSIM, Plan_Quantity, SIM_type, Name_Email, Details;
+var x, Total, Plan, months, Price, GPU2, Discount, Discount_representation, Quantity, Departments, IVR, Additional, Company, Annual, eSIM, Plan_Quantity, SIM_type, Name_Email, Details, Terms;
 
 // Describe this function...
 function Update_total() {
@@ -426,6 +426,27 @@ var we_tabs_next_button = '#next';
       $(we_tabs_next_button).addClass(we_tabs_active_class);
       $(".w--tab-active").attr('next-tab',nextTab);
       $($('[data-w-tab=Details]')).attr('prev-tab',we_activeTab);
+
+
+    }if($('.w--tab-active').attr('data-w-tab')=='Details') {
+        $('#next').addClass('active');
+
+      nextTab = 'Terms';
+      we_activeTab = $(".w--tab-active").attr("data-w-tab");
+      we_indexOfActiveTab = tabList.indexOf(we_activeTab);
+      we_indexOfNextTab = we_indexOfActiveTab + 1;
+      we_indexOfPrevTab = we_indexOfActiveTab - 1;
+      we_prevTab = tabList[we_indexOfPrevTab];
+      we_amountOfTabs = tabList.length;
+
+      if (we_indexOfNextTab < we_amountOfTabs) {
+        tabList[we_indexOfNextTab] = nextTab;
+      } else {
+        tabList.push(nextTab);
+      }
+      $(we_tabs_next_button).addClass(we_tabs_active_class);
+      $(".w--tab-active").attr('next-tab',nextTab);
+      $($('[data-w-tab=Terms]')).attr('prev-tab',we_activeTab);
 
 
     }
