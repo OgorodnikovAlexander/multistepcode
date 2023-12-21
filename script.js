@@ -440,13 +440,13 @@ $("[data-name='Plan']").on("input", function () {
 });
 
 $("[data-name='IVR-amount']").on("input", function () {
-      $('#IVR-amount').show();
+      $('.ivr').show();
   IVR = getValueFromInputData('IVR-amount');
   Update_total();
 });
     
     $("[data-name='IVR-amount']").parent("label.w-radio").on("click", function () {
-        $('#IVR-amount').show();
+        $('.ivr').show();
   IVR = getValueFromInputData('IVR-amount');
   Update_total();
 });
@@ -466,13 +466,13 @@ $('#Department').on('click',function() {
 });
 
 $("[data-name='Departments-amount']").on("input", function () {
-      $('#Departments-amount').show();
+      $('.departments').show();
   Departments = getValueFromInputData('Departments-amount');
   Update_total();
 });
     
     $("[data-name='Departments-amount']").parent("label.w-radio").on("click", function () {
-        $('#Departments-amount').show();
+        $('.departments').show();
   Departments = getValueFromInputData('Departments-amount');
   Update_total();
 });
