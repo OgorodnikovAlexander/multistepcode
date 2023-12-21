@@ -1,4 +1,4 @@
-var x, Total, Plan, months, Price, Discount, Discount_representation, GPU2, Quantity, IVR, Departments, Additional, Company, Annual, eSIM, Plan_Quantity, SIM_type, Name_Email, Details;
+var x, Total, Plan, months, Price, GPU2, Discount, Discount_representation, Quantity, IVR, Departments, Additional, Company, Annual, eSIM, Plan_Quantity, SIM_type, Name_Email, Details;
 
 // Describe this function...
 function Update_total() {
@@ -15,6 +15,20 @@ function Update_total() {
   $('[bloc=Departments]').text((Math.round((Departments * months * Discount)*10))/10);
   $('[bloc=IVR]').text((Math.round((IVR * months * Discount)*1))/1);
   Update_discount_representation();
+}
+
+// Describe this function...
+function Get_GPU_Price() {
+  if (Plan == 38) {
+    GPU2 = 0;
+  } else if (Plan == 56) {
+    GPU2 = 650;
+  } else if (false) {
+    GPU2 = 550;
+  } else {
+    GPU2 = 0;
+  }
+  return GPU2;
 }
 
 // Describe this function...
@@ -492,38 +506,12 @@ $("[data-name='IVR-amount']").on("input", function () {
 });
 
 $("[data-name='GPU']").on("input", function () {
-      if ($('#GPU:checked').length != 0) {
-    $('#GPU-amount').show();
-    GPU2 = getValueFromInputData('GPU-amount');
-    Update_total();
-  } else {
-    $('#GPU-amount').hide();
-    GPU2 = 0;
-    Update_total();
-  }
-});
-    
-    $("[data-name='GPU']").parent("label.w-radio").on("click", function () {
-        if ($('#GPU:checked').length != 0) {
-    $('#GPU-amount').show();
-    GPU2 = getValueFromInputData('GPU-amount');
-    Update_total();
-  } else {
-    $('#GPU-amount').hide();
-    GPU2 = 0;
-    Update_total();
-  }
-});
-
-$("[data-name='IVR-amount']").on("input", function () {
-      $('#GPU-amount').show();
-  GPU2 = getValueFromInputData('GPU-amount');
+      GPU2 = Get_GPU_Price();
   Update_total();
 });
     
-    $("[data-name='IVR-amount']").parent("label.w-radio").on("click", function () {
-        $('#GPU-amount').show();
-  GPU2 = getValueFromInputData('GPU-amount');
+    $("[data-name='GPU']").parent("label.w-radio").on("click", function () {
+        GPU2 = Get_GPU_Price();
   Update_total();
 });
 
