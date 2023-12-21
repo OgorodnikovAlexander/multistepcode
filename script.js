@@ -15,6 +15,7 @@ function Update_total() {
   $('[bloc=Departments]').text((Math.round((Departments * months * Discount)*10))/10);
   $('[bloc=IVR]').text((Math.round((IVR * months * Discount)*1))/1);
   Update_discount_representation();
+  Add_order_line();
 }
 
 // Describe this function...
@@ -44,7 +45,7 @@ function Get__Plan_Prise(x) {
 
 // Describe this function...
 function Add_order_line() {
-  if (Departments >= 1) {
+  if (Departments > 1) {
     $('.departments').show();
   } else {
     $('.departments').hide();
