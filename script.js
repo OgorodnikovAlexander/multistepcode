@@ -1,4 +1,4 @@
-var x, Total, Plan, months, Price, Discount, Discount_representation, GPU2, Quantity, Departments, Additional, IVR, Company, Annual, eSIM, Plan_Quantity, SIM_type, Name_Email;
+var x, Total, Plan, months, Price, Discount, Discount_representation, GPU2, Quantity, Departments, Additional, IVR, Company, Annual, eSIM, Plan_Quantity, SIM_type, Name_Email, Details;
 
 // Describe this function...
 function Update_total() {
@@ -396,6 +396,7 @@ var we_tabs_next_button = '#next';
 
 
     }if($('.w--tab-active').attr('data-w-tab')=='SIM_type') {
+        $('#next').addClass('active');
 
       nextTab = 'Additional';
       we_activeTab = $(".w--tab-active").attr("data-w-tab");
@@ -413,6 +414,30 @@ var we_tabs_next_button = '#next';
       $(we_tabs_next_button).addClass(we_tabs_active_class);
       $(".w--tab-active").attr('next-tab',nextTab);
       $($('[data-w-tab=Additional]')).attr('prev-tab',we_activeTab);
+
+
+    }if($('.w--tab-active').attr('data-w-tab')=='Additional') {
+        $('#Departments-amount').hide();
+  $('#IVR-amount').hide();
+  $('#GPU-amount').hide();
+  $('#next').addClass('active');
+
+      nextTab = 'Details';
+      we_activeTab = $(".w--tab-active").attr("data-w-tab");
+      we_indexOfActiveTab = tabList.indexOf(we_activeTab);
+      we_indexOfNextTab = we_indexOfActiveTab + 1;
+      we_indexOfPrevTab = we_indexOfActiveTab - 1;
+      we_prevTab = tabList[we_indexOfPrevTab];
+      we_amountOfTabs = tabList.length;
+
+      if (we_indexOfNextTab < we_amountOfTabs) {
+        tabList[we_indexOfNextTab] = nextTab;
+      } else {
+        tabList.push(nextTab);
+      }
+      $(we_tabs_next_button).addClass(we_tabs_active_class);
+      $(".w--tab-active").attr('next-tab',nextTab);
+      $($('[data-w-tab=Details]')).attr('prev-tab',we_activeTab);
 
 
     }
