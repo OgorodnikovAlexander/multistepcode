@@ -44,7 +44,7 @@ function Get__Plan_Prise(x) {
 
 // Describe this function...
 function Add_order_line() {
-  if (Departments > 1) {
+  if (Departments >= 1) {
     $('.departments').show();
   } else {
     $('.departments').hide();
