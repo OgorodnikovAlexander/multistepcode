@@ -574,49 +574,8 @@ $('#GPUcheckbox').on('click',function() {
 
       });
 
-$("[data-name='Do not know']").on("input", function () {
-      if ($('#dontknow:checked').length != 0) {
-    $('#Departments-amount').hide();
-    $('.departments').hide();
-    Departments = 0;
-    $('#IVR-amount').hide();
-    $('.ivr').hide();
-    IVR = 0;
-    $('#GPU-amount').hide();
-    $('.gpu').hide();
-    GPU2 = 0;
-    Update_total();
-  } else {
-    updateValueInInputData('',"Departments-amount");
-    updateValueInInputData('',"IVR-amount");
-    Departments = 0;
-    IVR = 0;
-    GPU2 = 0;
-    Update_total();
-  }
-  $('#next').addClass('active');
-
-      nextTab = 'Details';
-      we_activeTab = $(".w--tab-active").attr("data-w-tab");
-      we_indexOfActiveTab = tabList.indexOf(we_activeTab);
-      we_indexOfNextTab = we_indexOfActiveTab + 1;
-      we_indexOfPrevTab = we_indexOfActiveTab - 1;
-      we_prevTab = tabList[we_indexOfPrevTab];
-      we_amountOfTabs = tabList.length;
-
-      if (we_indexOfNextTab < we_amountOfTabs) {
-        tabList[we_indexOfNextTab] = nextTab;
-      } else {
-        tabList.push(nextTab);
-      }
-      $(we_tabs_next_button).addClass(we_tabs_active_class);
-      $(".w--tab-active").attr('next-tab',nextTab);
-      $($('[data-w-tab=Details]')).attr('prev-tab',we_activeTab);
-
-      });
-    
-    $("[data-name='Do not know']").parent("label.w-radio").on("click", function () {
-        if ($('#dontknow:checked').length != 0) {
+$('#Do-not-know').on('click',function() {
+  if ($('#dontknow:checked').length != 0) {
     $('#Departments-amount').hide();
     $('.departments').hide();
     Departments = 0;
