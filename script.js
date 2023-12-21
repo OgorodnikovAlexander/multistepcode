@@ -531,7 +531,7 @@ $("[data-name='Do not know']").on("input", function () {
 });
     
     $("[data-name='Do not know']").parent("label.w-radio").on("click", function () {
-        if ($('#dontknow:checked').length != 0) {
+        if ($('#dontknow:checked').length != 0) 
     $('#Departments-amount').hide();
     Departments = 0;
     $('#IVR-amount').hide();
