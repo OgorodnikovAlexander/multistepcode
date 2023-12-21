@@ -188,26 +188,6 @@ $("[data-name='Multi Step Form'] label.w-radio").on("click", function () {
   Multi_Step_Form_form_change();
 });
 
-$("[data-name='Department']").on("input", function () {
-      if ($('#Department:checked').length != 0) {
-    $('#Departments-amount').show();
-  } else {
-    $('#Departments-amount').hide();
-    Departments = 0;
-    Update_total();
-  }
-});
-    
-    $("[data-name='Department']").parent("label.w-radio").on("click", function () {
-        if ($('#Department:checked').length != 0) {
-    $('#Departments-amount').show();
-  } else {
-    $('#Departments-amount').hide();
-    Departments = 0;
-    Update_total();
-  }
-});
-
 $("[data-name='Email']").on("input", function () {
       Check_Email();
 });
@@ -287,6 +267,18 @@ $("[data-name='SIM type']").on("input", function () {
     eSIM = 'False';
   } else if (getValueFromInputData('SIM type') == 'eSIM') {
     eSIM = 'True';
+  }
+});
+
+$('#IVR').on('click',function() {
+  if ($('#IVR:checked').length != 0) {
+    $('#IVR-amount').show();
+    IVR = getValueFromInputData('IVR-amount');
+    Update_total();
+  } else {
+    $('#IVR-amount').hide();
+    IVR = 0;
+    Update_total();
   }
 });
 
@@ -438,30 +430,6 @@ var we_tabs_next_button = '#next';
 
 
     }
-$("[data-name='IVR']").on("input", function () {
-      if ($('#IVR:checked').length != 0) {
-    $('#IVR-amount').show();
-    IVR = getValueFromInputData('IVR-amount');
-    Update_total();
-  } else {
-    $('#IVR-amount').hide();
-    IVR = 0;
-    Update_total();
-  }
-});
-    
-    $("[data-name='IVR']").parent("label.w-radio").on("click", function () {
-        if ($('#IVR:checked').length != 0) {
-    $('#IVR-amount').show();
-    IVR = getValueFromInputData('IVR-amount');
-    Update_total();
-  } else {
-    $('#IVR-amount').hide();
-    IVR = 0;
-    Update_total();
-  }
-});
-
 $("[data-name='Plan']").on("input", function () {
       Plan = Get__Plan_Prise(getValueFromInputData('Plan'));
   Update_total();
@@ -494,17 +462,6 @@ $("[data-name='IVR-amount']").on("input", function () {
   Update_total();
 });
 
-$('#GPUcheckbox').on('click',function() {
-  if ($('#GPUcheckbox:checked').length != 0) {
-    GPU2 = Get_GPU_Price();
-    Update_total();
-  } else {
-    $('#GPU-amount').hide();
-    GPU2 = 0;
-    Update_total();
-  }
-});
-
 $('#Department').on('click',function() {
   if ($('#Department:checked').length != 0) {
     $('#Departments-amount').show();
@@ -527,6 +484,17 @@ $("[data-name='Departments-amount']").on("input", function () {
         $('#Departments-amount').show();
   Departments = getValueFromInputData('Departments-amount');
   Update_total();
+});
+
+$('#GPUcheckbox').on('click',function() {
+  if ($('#GPUcheckbox:checked').length != 0) {
+    GPU2 = Get_GPU_Price();
+    Update_total();
+  } else {
+    $('#GPU-amount').hide();
+    GPU2 = 0;
+    Update_total();
+  }
 });
 
 $("[data-name='Do not know']").on("input", function () {
