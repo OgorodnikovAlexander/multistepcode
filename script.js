@@ -509,6 +509,8 @@ $("[data-name='Do not know']").on("input", function () {
   } else {
     updateValueInInputData('',"Departments-amount");
     updateValueInInputData('',"IVR-amount");
+    Departments = 0;
+    IVR = 0;
     GPU2 = 0;
     Update_total();
   }
@@ -529,6 +531,8 @@ $("[data-name='Do not know']").on("input", function () {
   } else {
     updateValueInInputData('',"Departments-amount");
     updateValueInInputData('',"IVR-amount");
+    Departments = 0;
+    IVR = 0;
     GPU2 = 0;
     Update_total();
   }
