@@ -22,6 +22,7 @@ function Get_GPU_Price() {
   if (Plan == 38) {
     GPU2 = 0;
   } else if (Plan == 56) {
+    console.log(Plan);
     GPU2 = 650;
   } else if (false) {
     GPU2 = 550;
