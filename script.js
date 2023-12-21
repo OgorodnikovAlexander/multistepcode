@@ -273,12 +273,12 @@ $("[data-name='SIM type']").on("input", function () {
 $('#IVR').on('click',function() {
   if ($('#IVR:checked').length != 0) {
     $('#IVR-amount').show();
-    $('#ivr-div').show();
+    $('.ivr').show();
     IVR = getValueFromInputData('IVR-amount');
     Update_total();
   } else {
     $('#IVR-amount').hide();
-    $('#ivr-div').hide();
+    $('.ivr').hide();
     IVR = 0;
     Update_total();
   }
@@ -467,12 +467,12 @@ $("[data-name='IVR-amount']").on("input", function () {
 $('#Department').on('click',function() {
   if ($('#Department:checked').length != 0) {
     $('#Departments-amount').show();
-    $('#department-div').show();
+    $('.departments').show();
     Departments = getValueFromInputData('Departments-amount');
     Update_total();
   } else {
     $('#Departments-amount').hide();
-    $('#department-div').hide();
+    $('.departments').hide();
     Departments = 0;
     Update_total();
   }
@@ -493,11 +493,12 @@ $("[data-name='Departments-amount']").on("input", function () {
 $('#GPUcheckbox').on('click',function() {
   if ($('#GPUcheckbox:checked').length != 0) {
     $('#gpu-div').show();
+    $('.gpu').show();
     GPU2 = Get_GPU_Price();
     Update_total();
   } else {
     $('#GPU-amount').hide();
-    $('#gpu-div').hide();
+    $('.gpu').hide();
     GPU2 = 0;
     Update_total();
   }
@@ -506,10 +507,13 @@ $('#GPUcheckbox').on('click',function() {
 $("[data-name='Do not know']").on("input", function () {
       if ($('#dontknow:checked').length != 0) {
     $('#Departments-amount').hide();
+    $('.departments').hide();
     Departments = 0;
     $('#IVR-amount').hide();
+    $('.ivr').hide();
     IVR = 0;
     $('#GPU-amount').hide();
+    $('.gpu').hide();
     GPU2 = 0;
     Update_total();
   } else {
@@ -523,10 +527,13 @@ $("[data-name='Do not know']").on("input", function () {
     $("[data-name='Do not know']").parent("label.w-radio").on("click", function () {
         if ($('#dontknow:checked').length != 0) {
     $('#Departments-amount').hide();
+    $('.departments').hide();
     Departments = 0;
     $('#IVR-amount').hide();
+    $('.ivr').hide();
     IVR = 0;
     $('#GPU-amount').hide();
+    $('.gpu').hide();
     GPU2 = 0;
     Update_total();
   } else {
