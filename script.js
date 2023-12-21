@@ -507,13 +507,23 @@ $("[data-name='IVR-amount']").on("input", function () {
 });
 
 $("[data-name='GPU']").on("input", function () {
-      GPU2 = Get_GPU_Price();
-  Update_total();
+      if ($('#GPU:checked').length != 0) {
+    GPU2 = Get_GPU_Price();
+    Update_total();
+  } else {
+    GPU2 = Get_GPU_Price();
+    Update_total();
+  }
 });
     
     $("[data-name='GPU']").parent("label.w-radio").on("click", function () {
-        GPU2 = Get_GPU_Price();
-  Update_total();
+        if ($('#GPU:checked').length != 0) {
+    GPU2 = Get_GPU_Price();
+    Update_total();
+  } else {
+    GPU2 = Get_GPU_Price();
+    Update_total();
+  }
 });
 
 $("[data-name='Do not know']").on("input", function () {
@@ -528,7 +538,7 @@ $("[data-name='Do not know']").on("input", function () {
   } else {
     updateValueInInputData('',"Departments-amount");
     updateValueInInputData('',"IVR-amount");
-    updateValueInInputData('',"GPU-amount");
+    GPU2 = 0;
     Update_total();
   }
 });
@@ -545,7 +555,7 @@ $("[data-name='Do not know']").on("input", function () {
   } else {
     updateValueInInputData('',"Departments-amount");
     updateValueInInputData('',"IVR-amount");
-    updateValueInInputData('',"GPU-amount");
+    GPU2 = 0;
     Update_total();
   }
 });
