@@ -12,8 +12,8 @@ function Update_total() {
   $('[bloc=Total]').text(Total);
   $('[bloc=Subscribtion]').text((Math.round((Quantity * Plan * months * Discount)*10))/10);
   $('[bloc=GPU]').text((Math.round((GPU2 * months * Discount)*10))/10);
-  $('[bloc=Departments]').text((Math.round((Departments * months * Discount)*10))/10);
-  $('[bloc=IVR]').text((Math.round((IVR * months * Discount)*1))/1);
+  $('[bloc=Departments]').text((Math.round((Departments * 15 * months * Discount)*10))/10);
+  $('[bloc=IVR]').text((Math.round((IVR * 15 * months * Discount)*1))/1);
   Update_discount_representation();
 }
 
