@@ -1,4 +1,4 @@
-var x, Total, Plan, months, Price, GPU2, Discount, Discount_representation, Name_Email, Quantity, Departments, IVR, Company, Additional, Plan_Quantity, Annual, eSIM, Details, SIM_type, Terms;
+var x, Total, Plan, months, Price, GPU2, Discount, Discount_representation, Name_Email, Quantity, Departments, IVR, Company, Additional, SIM_type, Annual, eSIM, Details, Plan_Quantity, Terms;
 
 // Describe this function...
 function Update_total() {
@@ -387,27 +387,6 @@ function Multi_Step_Form_form_change() {
       }if($('.w--tab-active').attr('data-w-tab')=='Company') {
           $('#back').show();
     $('#next').removeClass('active');
-
-      }if($('.w--tab-active').attr('data-w-tab')=='Plan_Quantity') {
-          $('#next').removeClass('active');
-
-        nextTab = 'Plan_Quantity';
-        we_activeTab = $(".w--tab-active").attr("data-w-tab");
-        we_indexOfActiveTab = tabList.indexOf(we_activeTab);
-        we_indexOfNextTab = we_indexOfActiveTab + 1;
-        we_indexOfPrevTab = we_indexOfActiveTab - 1;
-        we_prevTab = tabList[we_indexOfPrevTab];
-        we_amountOfTabs = tabList.length;
-
-        if (we_indexOfNextTab < we_amountOfTabs) {
-          tabList[we_indexOfNextTab] = nextTab;
-        } else {
-          tabList.push(nextTab);
-        }
-        $(we_tabs_next_button).addClass(we_tabs_active_class);
-        $(".w--tab-active").attr('next-tab',nextTab);
-        $($('[data-w-tab=Plan_Quantity]')).attr('prev-tab',we_activeTab);
-
 
       }if($('.w--tab-active').attr('data-w-tab')=='SIM_type') {
           $('#next').addClass('active');
