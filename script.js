@@ -19,14 +19,12 @@ function Update_total() {
 
 // Describe this function...
 function Get_GPU_Price() {
-  GPU2 = 0;
-  console.log(Plan);
   if (Plan == 38) {
     GPU2 = 0;
   } else if (Plan == 56) {
     console.log(Plan);
     GPU2 = 650;
-  } else if (false) {
+  } else if (Plan == 94) {
     GPU2 = 550;
   } else {
     GPU2 = 0;
