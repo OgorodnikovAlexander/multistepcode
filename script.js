@@ -15,7 +15,6 @@ function Update_total() {
   $('[bloc=Departments]').text((Math.round((Departments * months * Discount)*10))/10);
   $('[bloc=IVR]').text((Math.round((IVR * months * Discount)*1))/1);
   Update_discount_representation();
-  Add_order_line();
 }
 
 // Describe this function...
@@ -496,6 +495,7 @@ $('#GPUcheckbox').on('click',function() {
     GPU2 = Get_GPU_Price();
     Update_total();
   } else {
+    $('#GPU-amount').hide();
     GPU2 = 0;
     Update_total();
   }
@@ -507,6 +507,7 @@ $('#Department').on('click',function() {
     Departments = getValueFromInputData('Departments-amount');
     Update_total();
   } else {
+    $('#Departments-amount').hide();
     Departments = 0;
     Update_total();
   }
