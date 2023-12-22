@@ -1,4 +1,4 @@
-var x, Total, Plan, months, Price, GPU2, Discount, Discount_representation, Quantity, Departments, IVR, Additional, Details, Company, Annual, eSIM, Plan_Quantity, SIM_type, Terms, Name_Email;
+var x, Total, Plan, months, Price, GPU2, Discount, Discount_representation, Quantity, Departments, IVR, Details, Additional, variable, Company, Annual, eSIM, Plan_Quantity, SIM_type, Terms, Name_Email;
 
 // Describe this function...
 function Update_total() {
@@ -8,7 +8,7 @@ function Update_total() {
   Total = Total + GPU2;
   Total = Total * Discount;
   Total = Total * months;
-  Total = (Math.ceil(Total*1))/1;
+  Total = (Math.ceil(Total*10))/10;
   $('[bloc=Total]').text(Total);
   Update_Order();
   Update_discount_representation();
@@ -19,7 +19,7 @@ function Update_Order() {
   $('[bloc=Subscribtion]').text((Math.round((Quantity * Plan * months * Discount)*10))/10);
   $('[bloc=GPU]').text((Math.round((GPU2 * months * Discount)*10))/10);
   $('[bloc=Departments]').text((Math.round((Departments * 15 * months * Discount)*10))/10);
-  $('[bloc=IVR]').text((Math.round((IVR * 15 * months * Discount)*1))/1);
+  $('[bloc=IVR]').text((Math.round((IVR * 15 * months * Discount)*10))/10);
 }
 
 // Describe this function...
@@ -37,7 +37,6 @@ function Get_GPU_Price() {
 
 // Describe this function...
 function Check_Details() {
-  console.log('SIRET+IBAN');
   if($('.w--tab-active').attr('data-w-tab')=='Details') {
           if (getValueFromInputData('SIRET') != '' && getValueFromInputData('IBAN') != '') {
       console.log('SIRET+IBAN');
@@ -401,6 +400,27 @@ var we_tabs_next_button = '#next';
       $(tab).addClass("w--tab-active");
       $(tab_link).siblings("a").removeClass("w--current");
       $(tab_link).addClass("w--current");
+    }if($('.w--tab-active').attr('data-w-tab')=='Name_Email') {
+        $('#next').addClass('active');
+
+      nextTab = 'Plan_Quantity';
+      we_activeTab = $(".w--tab-active").attr("data-w-tab");
+      we_indexOfActiveTab = tabList.indexOf(we_activeTab);
+      we_indexOfNextTab = we_indexOfActiveTab + 1;
+      we_indexOfPrevTab = we_indexOfActiveTab - 1;
+      we_prevTab = tabList[we_indexOfPrevTab];
+      we_amountOfTabs = tabList.length;
+
+      if (we_indexOfNextTab < we_amountOfTabs) {
+        tabList[we_indexOfNextTab] = nextTab;
+      } else {
+        tabList.push(nextTab);
+      }
+      $(we_tabs_next_button).addClass(we_tabs_active_class);
+      $(".w--tab-active").attr('next-tab',nextTab);
+      $($('[data-w-tab=Plan_Quantity]')).attr('prev-tab',we_activeTab);
+
+
     }if($('.w--tab-active').attr('data-w-tab')=='Plan_Quantity') {
         $('#next').removeClass('active');
 
@@ -472,16 +492,18 @@ var we_tabs_next_button = '#next';
         $('#back').show();
   $('#next').removeClass('active');
 
+    }if($('.w--tab-active').attr('data-w-tab')=='Terms') {
+        console.log('terms');
+  $('.next-but').hide();
+
     }
 $("[data-name='Plan']").on("input", function () {
       Plan = Get__Plan_Prise(getValueFromInputData('Plan'));
-  GPU2 = Get_GPU_Price();
   Update_total();
 });
     
     $("[data-name='Plan']").parent("label.w-radio").on("click", function () {
         Plan = Get__Plan_Prise(getValueFromInputData('Plan'));
-  GPU2 = Get_GPU_Price();
   Update_total();
 });
 
@@ -519,6 +541,15 @@ $("[data-name='IVR-amount']").on("input", function () {
         $('.ivr').show();
   IVR = getValueFromInputData('IVR-amount');
   Update_total();
+});
+
+$('#Agree').on('click',function() {
+  if ($('#Agree:checked').length != 0) {
+    $('#submit').show();
+    $('.next-but').hide();
+  } else {
+    $('#submit').hide();
+  }
 });
 
 $('#Department').on('click',function() {
@@ -566,6 +597,41 @@ $("[data-name='Departments-amount']").on("input", function () {
   Update_total();
 });
 
+$('#submit').on('click',function() {
+  var settings_list = {
+      async: true,
+      crossDomain: true,
+      url: 'endpoint url',
+      data: {
+          variable: variable,
+
+      },
+      headers: {},
+      method: "GET"
+    };
+    $.ajax(settings_list).done(function (response) {
+
+      var dataTemplate = $('.collection-list').children().eq(0).prop('outerHTML');
+      $('.collection-list').children().eq(0).hide();
+    var buildCollectionBasedOnAPI = true;
+    console.log(response);
+  if (Array.isArray(response)) {
+
+      var parentCollectionClass = '.collection-list *:last-child';
+      response.forEach((item) => {
+      var dataTemplateActual = dataTemplate;
+        dataTemplateActual = dataTemplateActual.replaceAll("http://[field_name]", item.field_name).replaceAll("[field_name]", item.field_name==undefined ? "" : item.field_name);
+
+      $('.collection-list').append(dataTemplateActual);
+        $(parentCollectionClass + " " + '.item').attr('field',item.field_name);
+
+    });
+    }
+      console.log('succes');
+
+    });
+    });
+
 $('#GPUcheckbox').on('click',function() {
   if ($('#GPUcheckbox:checked').length != 0) {
     $('.gpu').show();
@@ -597,14 +663,18 @@ $('#GPUcheckbox').on('click',function() {
 
       });
 
+$(‘#IVR’).prop(‘checked’, true)
+
 $('#Do-not-know').on('click',function() {
   if ($('#dontknow:checked').length == 0) {
+    $(‘#Department’).prop(‘checked’, true)
     $('#Departments-amount').hide();
     $('.departments').hide();
     Departments = 0;
     $('#IVR-amount').hide();
     $('.ivr').hide();
     IVR = 0;
+    $(‘#GPU’).prop(‘checked’, true)
     $('#GPU-amount').hide();
     $('.gpu').hide();
     GPU2 = 0;
